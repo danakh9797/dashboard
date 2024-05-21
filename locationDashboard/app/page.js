@@ -80,7 +80,7 @@ const HomePage = () => {
             icon={icon}
           >
             <Popup>
-              User: {userId} <br /> Last updated:{" "}
+              User: {locations[userId].username} <br /> Last updated:{" "}
               {new Date(locations[userId].timestamp).toLocaleTimeString()}
             </Popup>
           </Marker>
