@@ -1,43 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
 import axios from "axios";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import icon from "leaflet/dist/images/marker-icon.png";
-import iconShadow from "leaflet/dist/images/marker-shadow.png";
-
-// delete L.Icon.Default.prototype._getIconUrl;
-
-// Dynamically import MapContainer to prevent SSR issues
-const MapContainer = dynamic(
-  () => import("react-leaflet").then((mod) => mod.MapContainer),
-  {
-    ssr: false,
-  }
-);
-const TileLayer = dynamic(
-  () => import("react-leaflet").then((mod) => mod.TileLayer),
-  {
-    ssr: false,
-  }
-);
-const Marker = dynamic(
-  () => import("react-leaflet").then((mod) => mod.Marker),
-  {
-    ssr: false,
-  }
-);
-const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
-  ssr: false,
-});
-
-// L.Icon.Default.mergeOptions({
-//   iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png").default,
-//   iconUrl: require("leaflet/dist/images/marker-icon.png").default,
-//   shadowUrl: require("leaflet/dist/images/marker-shadow.png").default,
-// });
+import { MapContainer, TileLayer, Popup } from "react-leaflet";
 
 const HomePage = () => {
   const [locations, setLocations] = useState({});
@@ -55,11 +22,11 @@ const HomePage = () => {
       }
     };
 
-    fetchLocations(); // Fetch locations initially
+    fetchLocations();
 
-    const interval = setInterval(fetchLocations, 5000); // Fetch new data every 5 seconds
+    const interval = setInterval(fetchLocations, 5000);
 
-    return () => clearInterval(interval); // Clean up interval on component unmount
+    return () => clearInterval(interval);
   }, []);
 
   const icon = L.icon({
