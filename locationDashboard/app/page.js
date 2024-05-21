@@ -65,7 +65,6 @@ const HomePage = () => {
   return (
     <div style={{ height: "100vh", width: "100%" }}>
       <MapContainer
-        center={[21.42664, 39.82563]}
         zoom={13}
         style={{ height: "100%", width: "100%" }}
       >
