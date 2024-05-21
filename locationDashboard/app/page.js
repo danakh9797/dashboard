@@ -36,32 +36,35 @@ const HomePage = () => {
   });
 
   return (
-    {(typeof window !== 'undefined') &&
     <div style={{ height: "100vh", width: "100%" }}>
-      <MapContainer
-        center={[21.42664, 39.82563]}
-        zoom={13}
-        style={{ height: "100%", width: "100%" }}
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-        {Object.keys(locations).map((userId) => (
-          <Marker
-            key={userId}
-            position={[locations[userId].latitude, locations[userId].longitude]}
-            icon={icon}
-          >
-            <Popup>
-              User: {userId} <br /> Last updated:{" "}
-              {new Date(locations[userId].timestamp).toLocaleTimeString()}
-            </Popup>
-          </Marker>
-        ))}
-      </MapContainer>
+      {typeof window !== "undefined" && (
+        <MapContainer
+          center={[21.42664, 39.82563]}
+          zoom={13}
+          style={{ height: "100%", width: "100%" }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          {Object.keys(locations).map((userId) => (
+            <Marker
+              key={userId}
+              position={[
+                locations[userId].latitude,
+                locations[userId].longitude,
+              ]}
+              icon={icon}
+            >
+              <Popup>
+                User: {userId} <br /> Last updated:{" "}
+                {new Date(locations[userId].timestamp).toLocaleTimeString()}
+              </Popup>
+            </Marker>
+          ))}
+        </MapContainer>
+      )}
     </div>
-}
   );
 };
 
