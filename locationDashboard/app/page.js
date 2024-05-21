@@ -36,6 +36,7 @@ const HomePage = () => {
   });
 
   return (
+    {(typeof window !== 'undefined') &&
     <div style={{ height: "100vh", width: "100%" }}>
       <MapContainer
         center={[21.42664, 39.82563]}
@@ -60,6 +61,7 @@ const HomePage = () => {
         ))}
       </MapContainer>
     </div>
+}
   );
 };
 
