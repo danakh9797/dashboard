@@ -32,7 +32,7 @@ const HomePage = () => {
     const fetchLocations = async () => {
       try {
         const response = await axios.get(
-          "https://testing-na3j.onrender.com/locations"
+          "https://chatapp-dtlr.onrender.com/locations"
         );
         setLocations(response.data);
       } catch (error) {
