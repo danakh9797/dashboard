@@ -32,7 +32,7 @@ const HomePage = () => {
     const fetchLocations = async () => {
       try {
         const response = await axios.get(
-          "https://fivedm.onrender.com/locations"
+          "https://testing-na3j.onrender.com/locations"
         );
         setLocations(response.data);
       } catch (error) {
